@@ -25,7 +25,6 @@
 ;;; Code:
 
 (require 'company)
-(require 'cl)
 (require 'flycheck)
 (require 'font-lock)
 (require 'yaml-mode)
