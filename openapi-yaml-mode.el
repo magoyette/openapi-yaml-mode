@@ -418,7 +418,9 @@ specific KEY."
     ;; Markdown italic
     ("[ \t_]\\*\\([^\\*[:space:]][^\\*]*\\)\\*[ \t_]" 1 openapi-yaml-markdown-italic-face append)
     ("[ \t\\*]_\\([^_[:space:]][^_]*\\)_[ \t\\*]" 1 openapi-yaml-markdown-italic-face append)
-    ("\\(.*\\)[\r]?[\n][ \t]*|?-+|-+" 1 openapi-yaml-markdown-bold-face)
+    ;; Markdown tables
+    ("\\(.*\\)[\r]?[\n][ \t]*|?[[:space:]]*-+[[:space:]]*|[[:space:]]*-+" 1 openapi-yaml-markdown-bold-face)
+    ("\\(.*\\)[\r]?[\n][ \t]*|[[:space:]]*-+[[:space:]]*|" 1 openapi-yaml-markdown-bold-face)
 
     ;; YAML comments (Markdown headers cannot be declared without some indentation)
     ("^#[[:space:]]*.*$" . font-lock-comment-face)

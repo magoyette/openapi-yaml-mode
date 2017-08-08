@@ -1,0 +1,21 @@
+swagger: '2.0'
+info:
+  description: |
+    Examples of Markdown tables.
+
+    First header | Second header
+    -------------|--------------
+    Cell #1 | Cell #2
+
+    | First header | Second header |
+    | ------------ | ------------- |
+    | Cell #1 | Cell #2 |
+
+    First header | Second header
+    ------------ | -------------
+    Cell #1 | Cell #2
+
+    | Single column table |
+    | ------------------- |
+    | Cell #1 |
+    | Cell #2 |
