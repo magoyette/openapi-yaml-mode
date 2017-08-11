@@ -26,6 +26,7 @@
 
 (require 'company)
 (require 'flycheck)
+(require 'cl-lib)
 (require 'font-lock)
 (require 'yaml-mode)
 
@@ -280,12 +281,12 @@ buffer to find the openapi or the swagger element."
   "Define a company backend for OpenAPI YAML files."
   (interactive (list 'interactive))
 
-  (case command
+  (cl-case command
     (interactive (company-begin-backend 'openapi-yaml-mode-company-backend))
     (prefix (and (eq major-mode 'openapi-yaml-mode)
                  (company-grab-symbol)))
     (candidates
-     (remove-if-not
+     (cl-remove-if-not
       (lambda (c) (string-prefix-p arg c))
       (if (openapi-yaml-mode-detect-openapi2)
           openapi-yaml-mode--openapi2-keywords
