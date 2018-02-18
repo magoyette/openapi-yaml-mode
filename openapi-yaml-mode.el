@@ -38,6 +38,12 @@ buffer to find the openapi or the swagger element."
   :type 'integer
   :group 'openapi-yaml)
 
+(defcustom openapi-yaml-use-yaml-mode-syntax-highlight nil
+  "If true, openapi-yaml-mode will use the regular syntax highlight of
+yaml-mode."
+  :type 'boolean
+  :group 'openapi-yaml)
+
 (defconst openapi-yaml-mode--syntax-table
   (let ((table (make-syntax-table)))
 
@@ -508,12 +514,14 @@ specific KEY."
   ;; Swagger specification is case sensitive
   ;;  (setq font-lock-keywords-case-fold-search t)
 
-  (set-syntax-table openapi-yaml-mode--syntax-table)
+  (unless openapi-yaml-use-yaml-mode-syntax-highlight
+    (progn
+      (set-syntax-table openapi-yaml-mode--syntax-table)
 
-  (set (make-local-variable 'font-lock-defaults)
-       (if (openapi-yaml-mode-detect-openapi2)
-           '(openapi-yaml-mode--font-lock-keywords-for-openapi nil nil)
-         '(openapi-yaml-mode--font-lock-keywords-for-openapi3 nil nil)))
+      (set (make-local-variable 'font-lock-defaults)
+           (if (openapi-yaml-mode-detect-openapi2)
+               '(openapi-yaml-mode--font-lock-keywords-for-openapi nil nil)
+             '(openapi-yaml-mode--font-lock-keywords-for-openapi3 nil nil)))))
 
   (add-to-list 'completion-at-point-functions
                (if (openapi-yaml-mode-detect-openapi2)
