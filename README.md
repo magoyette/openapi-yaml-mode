@@ -15,4 +15,4 @@ OpenAPI YAML mode is under initial development and is not yet stable.
 
 ## Complementary packages
 
-- Swagger 2 validation can be added with the [flycheck-swagger-tools](https://github.com/magoyette/flycheck-swagger-tools) package.
+- Swagger 2 validation can be added with [flycheck-swagger-cli](https://github.com/magoyette/flycheck-swagger-cli) or [flycheck-swagger-tools](https://github.com/magoyette/flycheck-swagger-tools).
