@@ -24,9 +24,6 @@
 
 ;;; Code:
 
-(require 'company)
-(require 'flycheck)
-(require 'cl-lib)
 (require 'font-lock)
 (require 'yaml-mode)
 
@@ -277,22 +274,21 @@ buffer to find the openapi or the swagger element."
             "refreshUrl"
             )))
 
-(defun openapi-yaml-mode-backend (command &optional arg &rest ignored)
-  "Define a company backend for OpenAPI YAML files."
-  (interactive (list 'interactive))
+(defun openapi-yaml-mode--openapi2-completion-at-point ()
+  "Completion function for Open API 2 files."
+  (let ((bounds (bounds-of-thing-at-point 'word)))
+    (when bounds
+      (list (car bounds)
+            (cdr bounds)
+            openapi-yaml-mode--openapi2-keywords))))
 
-  (cl-case command
-    (interactive (company-begin-backend 'openapi-yaml-mode-company-backend))
-    (prefix (and (eq major-mode 'openapi-yaml-mode)
-                 (company-grab-symbol)))
-    (candidates
-     (cl-remove-if-not
-      (lambda (c) (string-prefix-p arg c))
-      (if (openapi-yaml-mode-detect-openapi2)
-          openapi-yaml-mode--openapi2-keywords
-        openapi-yaml-mode--openapi3-keywords)))))
-
-(add-to-list 'company-backends 'openapi-yaml-mode-backend)
+(defun openapi-yaml-mode--openapi3-completion-at-point ()
+  "Completion function for Open API 3 files."
+  (let ((bounds (bounds-of-thing-at-point 'word)))
+    (when bounds
+      (list (car bounds)
+            (cdr bounds)
+            openapi-yaml-mode--openapi3-keywords))))
 
 (defvar openapi-yaml-markdown-header-face 'openapi-yaml-markdown-header-face
   "Face for Markdown headers in an OpenAPI YAML file.")
@@ -517,7 +513,12 @@ specific KEY."
   (set (make-local-variable 'font-lock-defaults)
        (if (openapi-yaml-mode-detect-openapi2)
            '(openapi-yaml-mode--font-lock-keywords-for-openapi nil nil)
-         '(openapi-yaml-mode--font-lock-keywords-for-openapi3 nil nil))))
+         '(openapi-yaml-mode--font-lock-keywords-for-openapi3 nil nil)))
+
+  (add-to-list 'completion-at-point-functions
+               (if (openapi-yaml-mode-detect-openapi2)
+                   'openapi-yaml-mode--openapi2-completion-at-point
+                 'openapi-yaml-mode--openapi3-completion-at-point)))
 
 (defun openapi-yaml-mode-detect-openapi2()
   (and

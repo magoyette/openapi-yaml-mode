@@ -9,7 +9,7 @@ OpenAPI YAML mode is under initial development and is not yet stable.
 ## Features
 
 - Syntax highlight based on the OpenAPI specification (version 2 and 3).
-- Very basic [Company](https://company-mode.github.io/) completion.
+- Basic completion with `completion-at-point`. Works with [Company](https://company-mode.github.io/) through the CAPF back-end.
 - [IMenu](https://www.gnu.org/software/emacs/manual/html_node/emacs/Imenu.html)
   for paths and operationIds.
 
