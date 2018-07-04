@@ -441,13 +441,6 @@ specific KEY."
     ;; Highlight null, true and false
     ("[ \t]\\(null\\|true\\|false\\)[[:space:],]" 1 font-lock-constant-face)
 
-    ;; Highlight for constant values based on the key
-    (,(openapi-yaml-mode--string-constant "\\(http\\|https\\|ws\\|wss\\)") 2 font-lock-constant-face)
-    (,(openapi-yaml-mode--string-constant-for-key "\\(query\\|header\\|path\\|formData\\|body\\)" "-?[[:space:]]*in") 2 font-lock-constant-face)
-    (,(openapi-yaml-mode--string-constant-for-key "\\(basic\\|apiKey\\|oauth2\\)" "type") 2 font-lock-constant-face)
-    (,(openapi-yaml-mode--string-constant-for-key "\\(query\\|header\\)" "in") 2 font-lock-constant-face)
-    (,(openapi-yaml-mode--string-constant-for-key "\\(implicit\\|password\\|application\\|accessCode\\)" "flow") 2 font-lock-constant-face)
-
     ;; Highlight operationId just like an url path
     (,(openapi-yaml-mode--string-constant-for-key "\\([^[:space:]:][^[:space:]]*\\)" "operationId") 2 openapi-yaml-url-path-face)
 
