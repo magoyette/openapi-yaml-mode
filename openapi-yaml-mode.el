@@ -478,9 +478,6 @@ specific KEY."
     ;; Query params in url paths
     ("/\\({[^}/[:space:]]*}\\)" 1 font-lock-keyword-face t)
 
-    ;; Curl command
-    ("[ \t]curl[ \t]" . font-lock-function-name-face)
-    ("[ \t]-X[ \t]*\\(GET\\|PUT\\|POST\\|DELETE\\|OPTIONS\\|HEAD\\|PATCH\\)[ \t]*" 1 openapi-yaml-http-method-face)
     ;; Path to a parameter
     (,(format "%s?#/parameters/\\([^\"\n\']*\\)%s?[[:space:]]*$" openapi-yaml-mode--space-or-quote openapi-yaml-mode--space-or-quote)
      1 font-lock-keyword-face t)))
