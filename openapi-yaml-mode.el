@@ -455,15 +455,6 @@ specific KEY."
     ;; Highlight operationId just like an url path
     (,(openapi-yaml-mode--string-constant-for-key "\\([^[:space:]:][^[:space:]]*\\)" "operationId") 2 openapi-yaml-url-path-face)
 
-    ;; XML syntax highlight
-    ("</?\\([^[:space:]][^>[:space:]]*\\)[^>]*>" 1 font-lock-function-name-face)
-    ("[[:space:]]\\([[:alpha:]]*\\)=\\(\'[^\']*\'\\)"
-     (1 font-lock-variable-name-face t)
-     (2 font-lock-string-face t))
-    ("[[:space:]]\\([[:alpha:]]*\\)=\\(\"[^\"]*\"\\)"
-     (1 font-lock-variable-name-face t)
-     (2 font-lock-string-face t))
-
     ;; Escape characters
     ("\\([\\]\\)\\([tbnrf\'\"\\]\\)"
      (1 font-lock-comment-face t)
