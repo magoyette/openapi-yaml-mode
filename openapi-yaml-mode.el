@@ -56,14 +56,12 @@
   :prefix "openapi-yaml-")
 
 (defcustom openapi-yaml-predicate-regexp-match-limit 4000
-  "Defines the number of characters that will be scanned at the beginning of a
-buffer to find the openapi or the swagger element."
+  "Number of characters to scan to find the OpenApi/Swagger element."
   :type 'integer
   :group 'openapi-yaml)
 
 (defcustom openapi-yaml-use-yaml-mode-syntax-highlight nil
-  "If true, openapi-yaml-mode will use the regular syntax highlight of
-yaml-mode."
+  "If true, openapi-yaml-mode will use the regular syntax highlight of yaml-mode."
   :type 'boolean
   :group 'openapi-yaml)
 
@@ -392,11 +390,12 @@ yaml-mode."
 (defun openapi-yaml-mode--string-constant (value)
   "Builds from a VALUE a regex string for a string constant."
   (format "\\(:\\|-\\)\\(%s*%s%s?\\)[[:space:]]*$"
-          openapi-yaml-mode--space-or-quote value openapi-yaml-mode--space-or-quote))
+          openapi-yaml-mode--space-or-quote
+          value
+          openapi-yaml-mode--space-or-quote))
 
 (defun openapi-yaml-mode--string-constant-for-key (value key)
-  "Builds from a VALUE a regex string for a string constant that is used with a
-specific KEY."
+  "Builds from VALUE a regex string for a string constant associated to a KEY."
   (format "^[[:space:]]*[:-]?[[:space:]]*%s[[:space:]]*\\(:\\|-\\)[[:space:]]*\n?[[:space:]]*\\(%s*%s%s?\\)[[:space:]]*$"
           key openapi-yaml-mode--space-or-quote value openapi-yaml-mode--space-or-quote))
 
@@ -522,7 +521,8 @@ specific KEY."
                    'openapi-yaml-mode--openapi2-completion-at-point
                  'openapi-yaml-mode--openapi3-completion-at-point)))
 
-(defun openapi-yaml-mode-detect-openapi2()
+(defun openapi-yaml-mode-detect-openapi2 ()
+  "Detect if a file is an OpenAPI 2 file."
   (and
    (or (string-suffix-p ".yaml" (buffer-name))
        (string-suffix-p ".yml" (buffer-name)))
@@ -533,6 +533,7 @@ specific KEY."
                              openapi-yaml-predicate-regexp-match-limit)))))
 
 (defun openapi-yaml-mode-detect-openapi3()
+  "Detect if a file is an OpenAPI 3 file."
   (and
    (or (string-suffix-p ".yaml" (buffer-name))
        (string-suffix-p ".yml" (buffer-name)))
