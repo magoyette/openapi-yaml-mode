@@ -304,11 +304,11 @@ yaml-mode."
   "Face for Markdown headers in an OpenAPI YAML file."
   :group 'faces)
 
-(defvar openapi-yaml-markdown-bold-face 'openapi-yaml-markdown-bold-face
+(defvar openapi-yaml-markdown-table-bold-face 'openapi-yaml-markdown-table-bold-face
   "Face for Markdown bold text in an OpenAPI YAML file.")
 
-(defface openapi-yaml-markdown-bold-face
-  '((t (:weight bold)))
+(defface openapi-yaml-markdown-table-bold-face
+  '((t (:inherit font-lock-comment-face :weight bold)))
   "Face for Markdown bold text in an OpenAPI YAML file."
   :group 'faces)
 
@@ -422,8 +422,7 @@ specific KEY."
     ("[ \t_]\\*\\([^\\*[:space:]][^\\*]*\\)\\*[ \t_]" 1 openapi-yaml-markdown-italic-face append)
     ("[ \t\\*]_\\([^_[:space:]][^_]*\\)_[ \t\\*]" 1 openapi-yaml-markdown-italic-face append)
     ;; Markdown tables
-    ("\\(.*\\)[\r]?[\n][ \t]*|?[[:space:]]*-+[[:space:]]*|[[:space:]]*-+" 1 openapi-yaml-markdown-bold-face)
-    ("\\(.*\\)[\r]?[\n][ \t]*|[[:space:]]*-+[[:space:]]*|" 1 openapi-yaml-markdown-bold-face)
+    ("\\(.*\\)[\r]?[\n][ \t]*|[ \t]?--.*|[ \t]*$" 1 openapi-yaml-markdown-table-bold-face t)
 
     ;; YAML comments (Markdown headers cannot be declared without some indentation)
     ("^#[[:space:]]*.*$" . font-lock-comment-face)
