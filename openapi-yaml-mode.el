@@ -392,8 +392,6 @@ specific KEY."
     ;; Url values
     ("[ \t]\\([\'\"]https?:[^[:space:]\"']*[\'\"]\\)[[:space:],]" 1 font-lock-string-face)
     ("[ \t\"']\\(https?:[^[:space:]\"']*\\)[[:space:],\"']" 1 font-lock-string-face)
-    ;; Generic path (might be an url path or a file path)
-    ;;("[[:space:]]*[\"\'`]?[^/]+/[^/[:space:]]+/[^/[:space:]][^[:space:]]*" . font-lock-string-face)
 
     ;; MIME types and formats share the same font face
     ("[ \t'\"`]\\(application/[^:\"\\'`[:space:]]*\\)" 1 font-lock-type-face)
