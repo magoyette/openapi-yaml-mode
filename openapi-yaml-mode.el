@@ -470,9 +470,6 @@ specific KEY."
     ;; HTTP headers
     ("[ \t\\'\"`]\\(Accept\\|Accept-Charset\\|Accept-Encoding\\|Accept-Language\\|Accept-Datetime\\|Authorization\\|Cache-Control\\|Content-Type\\):[ \t]" 1 font-lock-constant-face)
 
-    ;; HTTP versions
-    ("HTTP/1.[10]" . font-lock-constant-face)
-
     ;; HTTP methods in text before an url path
     ("\\(GET\\|PUT\\|POST\\|DELETE\\|OPTIONS\\|HEAD\\|PATCH\\)[ \t]*\\(/[^[:space:]]*\\|http\\)"
      (1 openapi-yaml-http-method-face)
