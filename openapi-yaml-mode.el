@@ -441,10 +441,6 @@ specific KEY."
     ;; Highlight null, true and false
     ("[ \t]\\(null\\|true\\|false\\)[[:space:],]" 1 font-lock-constant-face)
 
-    ;; Pattern regex syntax highlight
-    ("pattern[[:space:]]*:[[:space:]]*\\([^[:space:]]*\\)" 1 font-lock-string-face)
-    ("pattern[[:space:]]*:[[:space:]]*[^[:space:]]*?\\[\\(\\^\\)" 1 font-lock-keyword-face t)
-
     ;; Highlight for constant values based on the key
     (,(openapi-yaml-mode--string-constant "\\(http\\|https\\|ws\\|wss\\)") 2 font-lock-constant-face)
     (,(openapi-yaml-mode--string-constant-for-key "\\(query\\|header\\|path\\|formData\\|body\\)" "-?[[:space:]]*in") 2 font-lock-constant-face)
