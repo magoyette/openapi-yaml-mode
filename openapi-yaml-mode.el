@@ -22,6 +22,29 @@
 
 ;;; Commentary:
 
+;; An Emacs major mode for OpenAPI YAML files. OpenAPI YAML mode supports
+;; OpenAPI 2 and 3. OpenAPI 2 files are identical to the Swagger 2 files.
+
+;; OpenAPI YAML mode is based on yaml-mode, but uses a different strategy
+;; for syntax highlight that takes into consideration the OpenAPI specification.
+
+;; OpenAPI YAML mode is under initial development and is not yet stable.
+
+;; Features:
+
+;; - Syntax highlight based on the OpenAPI specification (version 2 and 3).
+;; - Basic completion with `completion-at-point`. Works with Company
+;;   through the CAPF back-end.
+;; - IMenu for paths and operationIds.
+
+;; Customizations:
+
+;; The defcustom variable openapi-yaml-use-yaml-mode-syntax-highlight can be
+;; used to disable the OpenAPI syntax highlight of OpenAPI YAML Mode.
+;; The default syntax highlight of yaml-mode is used instead.
+
+;; (setq openapi-yaml-use-yaml-mode-syntax-highlight t)
+
 ;;; Code:
 
 (require 'font-lock)
