@@ -15,7 +15,7 @@ OpenAPI YAML mode is under initial development and is not yet stable.
 
 ## Complementary packages
 
-- Swagger 2 validation can be added with [flycheck-swagger-cli](https://github.com/magoyette/flycheck-swagger-cli) or [flycheck-swagger-tools](https://github.com/magoyette/flycheck-swagger-tools).
+- Swagger 2 validation can be added with [flycheck-swagger-cli](https://github.com/magoyette/flycheck-swagger-cli).
 
 ## Customizations
 
@@ -25,6 +25,6 @@ The defcustom variable `openapi-yaml-use-yaml-mode-syntax-highlight` can be used
 disable the OpenAPI syntax highlight of OpenAPI YAML Mode. The default syntax
 highlight of [yaml-mode](https://github.com/yoshiki/yaml-mode) is used instead.
 
-``` emacs-lisp
+```emacs-lisp
 (setq openapi-yaml-use-yaml-mode-syntax-highlight t)
 ```
