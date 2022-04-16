@@ -2,9 +2,9 @@
 
 An Emacs major mode for [OpenAPI](https://github.com/OAI/OpenAPI-Specification) YAML files. OpenAPI YAML mode supports OpenAPI 2 and 3. OpenAPI 2 files are identical to the [Swagger](https://swagger.io/) 2 files.
 
-OpenAPI YAML mode is based on [yaml-mode](https://github.com/yoshiki/yaml-mode), but uses a different strategy for syntax highlight that takes into consideration the OpenAPI specification.
+This project is archived and will no longer be maintained. OpenAPI YAML mode has some unfixed issues, so it might not be very stable.
 
-OpenAPI YAML mode is under initial development and is not yet stable.
+OpenAPI YAML mode is based on [yaml-mode](https://github.com/yoshiki/yaml-mode), but uses a different strategy for syntax highlight that takes into consideration the OpenAPI specification. It depends on many regexes to do some custom syntax highlight based on the contents of a typical OpenAPI file, but that approach is quite limited.
 
 ## Features
 
